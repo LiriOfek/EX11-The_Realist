@@ -49,3 +49,4 @@ bool check_if_memory_allocation_succeed(int* array_pointer) {
 		return true;
 	}
 }
+
