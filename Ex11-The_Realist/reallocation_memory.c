@@ -76,3 +76,102 @@ int get_numbers_till_initiate_size(int *array_pointer) {
 	}
 	return index_in_array;
 }
+
+int increase_array_size_according_to_user(int size_of_array,
+	int* array_pointer,
+	int index_in_array) {
+	/********************************************************\
+	* Function name - increase_array_size_according_to_user
+	*
+	* Function Purpose - get numbers from user and fill the array with
+	*					 numbers, according to the index, increase the
+	*					 size of the array according to the numbers that
+	*					 received from user
+	*
+	* Parameters -  IN int size_of_array - the size of the array
+	*				INOUT int* array_pointer - the pointer to the array
+	*				that contain the numbers from the user
+	*				INOUT int index_in_array - the index in the array
+	*
+	* Return Value - the index of the next element in array
+	*
+	* Side Effects - this function change the array_pointer,
+	*				 such that it add to the array the numbers from user,
+	*				 and increase the size of the array according to the
+	*				 numbers from user
+	*
+	* Semantics - this function get numbers from user and fill the array with
+	*			  numbers, according to the index, increase the size of the
+	*			  array according to the numbers that received from user
+	*			  elements
+	*
+	* Author - Liri
+	\********************************************************/
+	while (true) {
+		++size_of_array;
+		array_pointer = (int*)realloc(array_pointer, size_of_array * sizeof(int));
+		if (false == check_if_memory_allocation_succeed(array_pointer)) {
+			return FAILURE;
+		}
+		scanf_s("%d", array_pointer + index_in_array);
+		if (END_OF_ELEMENTS == *(array_pointer + index_in_array))
+		{
+			break;
+		}
+		++index_in_array;
+	}
+	return index_in_array;
+}
+
+int get_numbers_from_user_to_array(int* array_pointer) {
+	/********************************************************\
+	* Function name - get_numbers_from_user_to_array
+	*
+	* Function Purpose - get numbers from user and fill the array with
+	*					 numbers, till receive INITIAL_SIZE_OF_ARRAY elements,
+	*					 and if receive more elements - increase the
+	*					 size of the array according to the numbers that
+	*					 received from user
+	*
+	* Parameters -  INOUT int* int* array_pointer - the pointer to the array
+	*				that contain the numbers from the user
+	*				INOUT int size of array
+	*
+	* Return Value - the size of the array
+	*
+	* Side Effects - this function change the array_pointer,
+	*				 such that it fill the array with numbers from user,
+	*				 till receive INITIAL_SIZE_OF_ARRAY elements,
+	*			     and if receive more elements - increase the
+	*			     size of the array according to the numbers that
+	*				 received from user
+	*
+	* Semantics - this function get numbers from user and fill the array with
+	*			  numbers, till receive INITIAL_SIZE_OF_ARRAY elements,
+	*			  and if receive more elements - increase the
+	*			  size of the array according to the numbers that
+	*			  received from user
+	*
+	* Author - Liri
+	\********************************************************/
+	int size_of_array = INITIAL_SIZE_OF_ARRAY;
+	int index_in_array = 0;
+
+	printf("Enter elements:\n");
+	index_in_array = get_numbers_till_initiate_size(array_pointer);
+
+	if (INITIAL_SIZE_OF_ARRAY == index_in_array)
+	{
+		index_in_array = increase_array_size_according_to_user(size_of_array,
+			array_pointer,
+			index_in_array);
+		if (FAILURE == index_in_array)
+		{
+			return FAILURE;
+		}
+
+	}
+
+	size_of_array = index_in_array;
+	return size_of_array;
+}
