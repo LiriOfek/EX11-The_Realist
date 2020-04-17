@@ -21,9 +21,15 @@
     <ClCompile Include="reallocation_memory.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="average_and_closest_number_to_it.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="reallocation_memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="average_and_closest_number_to_it.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

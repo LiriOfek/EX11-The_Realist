@@ -119,10 +119,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="average_and_closest_number_to_it.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="reallocation_memory.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="average_and_closest_number_to_it.h" />
     <ClInclude Include="reallocation_memory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
